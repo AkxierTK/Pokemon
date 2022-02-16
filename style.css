@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* font-family: 'Press Start 2P', cursive; */
+*{
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+
+
+}
+
+.pokemon_Div{
+    width: 275px;
+    background-color:aquamarine;
+    border-radius: 5px;
+    height: 300px;
+    margin-top: 2em;
+    margin-left: 5.75%;
+}
+.pokemon_Div:hover{
+    -webkit-box-shadow: inset -1px 3px 8px 5px #9a56a0, 2px 5px 16px 0px #9a56a0, 5px 5px 15px 5px rgba(0,0,0,0); 
+box-shadow: inset -1px 3px 8px 5px #9a56a0, 2px 5px 16px 0px #9a56a0, 5px 5px 15px 5px rgba(0,0,0,0);
+}
+
+.tipo_Div{
+    width: 150px;
+    border-radius: 5px;
+    height: 150px;
+    margin-top: 1em;
+    margin-left: 5%;
+}
+
+.tipo_Div:hover{
+    -webkit-box-shadow: inset -1px 3px 8px 5px #9a56a0, 2px 5px 16px 0px #9a56a0, 5px 5px 15px 5px rgba(0,0,0,0); 
+box-shadow: inset -1px 3px 8px 5px #9a56a0, 2px 5px 16px 0px #9a56a0, 5px 5px 15px 5px rgba(0,0,0,0);
+}
+
+.tipo{
+    margin-top: 50%;
+}
+
+
+img{
+    width: 200px;
+    margin-top: 1em;
+}
+
+.nombre{
+    margin-top: 1em;
+}
+.lista{
+    width: 80%;
+    margin-left: 10%;
+}
+
+.nombre{
+    margin-top: 1em;
+    font-size: 30px;
+}
+h2::first-letter,.tipo::first-letter,.nombre::first-letter{
+    text-transform:uppercase;
+}
+
+.modal{
+    display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0%;
+  top: 0%;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.infoPokemon{
+    position: fixed;
+    left: 33%;
+    top: 10%;
+    width: 33%; 
+    height: 60%;
+    border-radius: 5px;
+}
+
+.infoPokemon>p{
+    color: white;
+}
+
+.close {
+    color: #4744c4;
+    float: right;
+    margin-right: 1em;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: rgb(252, 248, 248);
+    text-decoration: none;
+    cursor: pointer;
+  }
