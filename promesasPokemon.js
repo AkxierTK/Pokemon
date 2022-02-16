@@ -114,10 +114,12 @@ fetch("https://pokeapi.co/api/v2/type/")
                                 });
                         });
                         divPokemon.appendChild(div);
+                    }else{
+
                     }
                 })).catch(error => console.log(error))
             document.body.appendChild(divPokemon);
         })
         lista.appendChild(div);
+})).catch(error => console.log(error));
 
-    })).catch(error => console.log(error));
