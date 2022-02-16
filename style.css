@@ -20,6 +20,13 @@
     -webkit-box-shadow: inset -1px 3px 8px 5px #9a56a0, 2px 5px 16px 0px #9a56a0, 5px 5px 15px 5px rgba(0,0,0,0); 
 box-shadow: inset -1px 3px 8px 5px #9a56a0, 2px 5px 16px 0px #9a56a0, 5px 5px 15px 5px rgba(0,0,0,0);
 }
+.imgInfo{
+    width: 40%;
+}
+.nombreInfo{
+    font-size: 30px;
+    margin-top: 1em;
+}
 
 .tipo_Div{
     width: 150px;
@@ -57,7 +64,7 @@ img{
     margin-top: 1em;
     font-size: 30px;
 }
-h2::first-letter,.tipo::first-letter,.nombre::first-letter{
+h2::first-letter,.tipo::first-letter,.nombre::first-letter,.nombreInfo::first-letter{
     text-transform:uppercase;
 }
 
@@ -77,10 +84,10 @@ h2::first-letter,.tipo::first-letter,.nombre::first-letter{
 
 .infoPokemon{
     position: fixed;
-    left: 33%;
+    left: 25.5%;
     top: 10%;
-    width: 33%; 
-    height: 60%;
+    width: 50%; 
+    height: 80%;
     border-radius: 5px;
 }
 

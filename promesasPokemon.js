@@ -12,10 +12,10 @@ tipos["steel"] = "slategrey";
 tipos["fire"] = "red";
 tipos["water"] = "cornflowerblue";
 tipos["grass"] = "green";
-tipos["electric"] = "yellow";
+tipos["electric"] = "gold";
 tipos["psychic"] = "pink";
 tipos["ice"] = "turquoise";
-tipos["dragon"] = "blue";
+tipos["dragon"] = "deepskyblue";
 tipos["dark"] = "dimgray";
 tipos["fairy"] = "orchid";
 tipos["unknown"] = "black";
@@ -27,8 +27,8 @@ fetch("https://pokeapi.co/api/v2/type/")
         let div = document.createElement("div");
         div.className = "tipo_Div col-4";
         div.style.backgroundColor = tipos[element.name];
-        if(element.name=="unknown" || element.name=="shadow"){
-            div.style.display="none";
+        if (element.name == "unknown" || element.name == "shadow") {
+            div.style.display = "none";
         }
         div.id = element.name;
         let p = document.createElement("p");
@@ -45,7 +45,7 @@ fetch("https://pokeapi.co/api/v2/type/")
             divPokemon.id = "pokemons";
             divPokemon.className = "lista row";
             h2 = document.createElement("h2");
-            h2.innerText = element.name+" type Pokemons";
+            h2.innerText = element.name + " type Pokemons";
             h2.id = "titulo";
             h2.style.marginTop = "1em";
             divPokemon.appendChild(h2);
@@ -75,51 +75,50 @@ fetch("https://pokeapi.co/api/v2/type/")
                         div.appendChild(img);
                         div.style.backgroundColor = color;
                         div.addEventListener("click", function (e) {
-                                
-                            
+
+
                             fetch(pokemon.pokemon.url)
                                 .then(respuesta => respuesta.json())
-                                .then(datos =>{
-                                    let model=document.createElement("div");
-                                    model.className="modal";
-                                    model.id="modal";
-                                    let infoPokemon=document.createElement("div");
-                                    infoPokemon.className="infoPokemon";
-                                    infoPokemon.style.backgroundColor=color;
-                                    let p1=document.createElement("p");
-                                    p1.innerText=pokemon.pokemon.name;
-                                    p1.className="nombre";
-                                    let p2=document.createElement("p");
-                                    p2.innerText="Type: "+datos.types[0].type.name+" Ability: "+datos.abilities[0].ability.name;
-                                    let img=document.createElement("img");
-                                    let span=document.createElement("span");
-                                    span.innerText="X";
-                                    span.className="close";
-                                    img.src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/" + numero + ".png";
+                                .then(datos => {
+                                    let model = document.createElement("div");
+                                    model.className = "modal";
+                                    model.id = "modal";
+                                    let infoPokemon = document.createElement("div");
+                                    infoPokemon.className = "infoPokemon";
+                                    infoPokemon.style.backgroundColor = color;
+                                    let p1 = document.createElement("p");
+                                    p1.innerText = pokemon.pokemon.name;
+                                    p1.className = "nombreInfo";
+                                    let p2 = document.createElement("p");
+                                    p2.innerText = "Type: " + datos.types[0].type.name + " Ability: " + datos.abilities[0].ability.name;
+                                    let img = document.createElement("img");
+                                    let span = document.createElement("span");
+                                    span.innerText = "X";
+                                    span.className = "close";
+                                    img.src = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/" + numero + ".png";
+                                    img.className="imgInfo";
                                     infoPokemon.appendChild(p1);
                                     infoPokemon.appendChild(span);
-                                    span.onclick = function() {
+                                    span.onclick = function () {
                                         document.body.removeChild(document.getElementById("modal"));
-                                      }
+                                    }
                                     infoPokemon.appendChild(img);
                                     infoPokemon.appendChild(p2);
-                                    window.onclick = function(event) {
+                                    window.onclick = function (event) {
                                         if (event.target == model) {
                                             document.body.removeChild(document.getElementById("modal"));
                                         }
                                     }
                                     model.appendChild(infoPokemon);
                                     document.body.appendChild(model);
-                                    model.style.display="block";
+                                    model.style.display = "block";
                                 });
                         });
                         divPokemon.appendChild(div);
-                    }else{
-
                     }
                 })).catch(error => console.log(error))
             document.body.appendChild(divPokemon);
         })
         lista.appendChild(div);
-})).catch(error => console.log(error));
+    })).catch(error => console.log(error));
 
