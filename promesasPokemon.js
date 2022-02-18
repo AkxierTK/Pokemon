@@ -89,21 +89,28 @@ fetch("https://pokeapi.co/api/v2/type/")
                                     let p1 = document.createElement("p");
                                     p1.innerText = pokemon.pokemon.name;
                                     p1.className = "nombreInfo";
+
                                     let p2 = document.createElement("p");
-                                    p2.innerText = "Type: " + datos.types[0].type.name + " Ability: " + datos.abilities[0].ability.name;
+                                    p2.innerText = "Type: " + datos.types[0].type.name;
+                                    if(datos.types[1]){
+                                        p2.innerText="Types "+ datos.types[0].type.name+" "+datos.types[1].type.name;
+                                    }
                                     let img = document.createElement("img");
                                     let span = document.createElement("span");
                                     span.innerText = "X";
                                     span.className = "close";
-                                    img.src = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/" + numero + ".png";
+                                    img.src="https://play.pokemonshowdown.com/sprites/ani/"+pokemon.pokemon.name+".gif"
                                     img.className="imgInfo";
                                     infoPokemon.appendChild(p1);
                                     infoPokemon.appendChild(span);
                                     span.onclick = function () {
                                         document.body.removeChild(document.getElementById("modal"));
                                     }
+                                    let divInfo=document.createElement("div");
+                                    divInfo.appendChild(p2)
+                                    divInfo.className="divInfo"
                                     infoPokemon.appendChild(img);
-                                    infoPokemon.appendChild(p2);
+                                    infoPokemon.appendChild(divInfo);
                                     window.onclick = function (event) {
                                         if (event.target == model) {
                                             document.body.removeChild(document.getElementById("modal"));

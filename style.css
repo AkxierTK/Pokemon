@@ -21,7 +21,9 @@
 box-shadow: inset -1px 3px 8px 5px #9a56a0, 2px 5px 16px 0px #9a56a0, 5px 5px 15px 5px rgba(0,0,0,0);
 }
 .imgInfo{
-    width: 40%;
+    margin-left: 45px;
+   max-width: 200px;
+    height: 200px;
 }
 .nombreInfo{
     font-size: 30px;
@@ -35,7 +37,18 @@ box-shadow: inset -1px 3px 8px 5px #9a56a0, 2px 5px 16px 0px #9a56a0, 5px 5px 15
     margin-top: 1em;
     margin-left: 5%;
 }
-
+.divInfo{
+    margin-top: 50px;
+    background-color: white;
+    border-color:  solid 3px black;
+    width:60%;
+    margin-left: 20%;
+    height: 30%;
+    border-radius: 5px;
+}
+.divInfo>p{
+    color: black;
+}
 .tipo_Div:hover{
     -webkit-box-shadow: inset -1px 3px 8px 5px #9a56a0, 2px 5px 16px 0px #9a56a0, 5px 5px 15px 5px rgba(0,0,0,0); 
 box-shadow: inset -1px 3px 8px 5px #9a56a0, 2px 5px 16px 0px #9a56a0, 5px 5px 15px 5px rgba(0,0,0,0);
@@ -91,9 +104,6 @@ h2::first-letter,.tipo::first-letter,.nombre::first-letter,.nombreInfo::first-le
     border-radius: 5px;
 }
 
-.infoPokemon>p{
-    color: white;
-}
 
 .close {
     color: #4744c4;
