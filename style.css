@@ -7,7 +7,10 @@
 
 
 }
-
+.tipos{
+    margin-right: 0.5em;
+    width: 150px;
+}
 .pokemon_Div{
     width: 300px;
     border-radius: 100%;
@@ -43,7 +46,7 @@ box-shadow: inset -1px 3px 8px 5px #9a56a0, 2px 5px 16px 0px #9a56a0, 5px 5px 15
     border-color:  solid 3px black;
     width:60%;
     margin-left: 20%;
-    height: 30%;
+    height: 40%;
     border-radius: 5px;
 }
 .divInfo>p{
@@ -58,6 +61,9 @@ box-shadow: inset -1px 3px 8px 5px #9a56a0, 2px 5px 16px 0px #9a56a0, 5px 5px 15
     margin-top: 50%;
 }
 
+.tipT{
+    font-size: 25px;
+}
 
 img{
     width: 200px;
