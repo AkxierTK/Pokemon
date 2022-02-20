@@ -111,6 +111,14 @@ fetch("https://pokeapi.co/api/v2/type/")
                                     p1.innerText = pokemon.pokemon.name;
                                     p1.className = "nombreInfo";
                                     let divInfo=document.createElement("div");
+                                    let pokeball=document.createElement("img");
+                                    pokeball.src="https://www.kindpng.com/picc/m/290-2906150_pokeball-pixel-art-png-transparent-png.png";
+                                    pokeball.className="pokeball";
+                                    let number=document.createElement("p");
+                                    number.className="id";
+                                    number.innerText="Pokedex: "+datos.id;
+                                    divInfo.appendChild(pokeball);
+                                    divInfo.appendChild(number);
                                     if(datos.types[1]){
                                         let p2 = document.createElement("p");
                                         p2.innerText="Types";
