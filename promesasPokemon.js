@@ -1,5 +1,5 @@
 let tipos = new Array();
-
+//Establecemos el array que determinará según el tipo el fondo de la caja y la esfera
 tipos["normal"] = "grey";
 tipos["fighting"] = "orange";
 tipos["flying"] = "aquamarine";
@@ -22,7 +22,7 @@ tipos["unknown"] = "black";
 tipos["shadow"] = "black";
 
 let imgType= new Array();
-
+//Establecemos según el tipo del pokémon en el array imagenes con el logo del tipo
 imgType["normal"] = "https://img.game8.co/3470555/27ddf735e2a6125669444acd30dbe64f.png/show";
 imgType["fighting"] = "https://img.game8.co/3470548/679b57558c19b04918183d6daabca6f6.png/show";
 imgType["flying"] = "https://img.game8.co/3470562/3c2f7201b82c60d49244f621f76826e9.png/show";
@@ -42,12 +42,16 @@ imgType["dragon"] = "https://img.game8.co/3470550/d4433cc46b60672113a88ae1b30e10
 imgType["dark"] = "https://img.game8.co/3470549/eb691bafeba863e995ab2315355e7f36.png/show";
 imgType["fairy"] = "https://img.game8.co/3470551/fd084f592835e0c379214e58351f8e99.png/show";
 
+//llamada a la lista de todos los tipos
 fetch("https://pokeapi.co/api/v2/type/")
     .then(respuesta => respuesta.json())
+    //por tipo vamos a crear un div
     .then(lista => lista.results.forEach(element => {
         let div = document.createElement("div");
         div.className = "tipo_Div col-4";
+        //el color del div es determinado por el array antes establecido
         div.style.backgroundColor = tipos[element.name];
+        //si el tipo es uno de los siguientes no lo mostramos pues no tienen pokémons
         if (element.name == "unknown" || element.name == "shadow") {
             div.style.display = "none";
         }
@@ -57,8 +61,10 @@ fetch("https://pokeapi.co/api/v2/type/")
         p.innerText = element.name;
         div.appendChild(p);
         lista = document.getElementById("lista");
+        //ahora le damos evento al div de los tipos
         div.addEventListener("click", function (e) {
             let color = this.style.backgroundColor;
+            //si cuando le damos habían cargados otros pokémons los eliminamos
             if (document.getElementById("pokemons")) {
                 document.body.removeChild(document.getElementById("pokemons"));
             }
@@ -70,13 +76,16 @@ fetch("https://pokeapi.co/api/v2/type/")
             h2.id = "titulo";
             h2.style.marginTop = "1em";
             divPokemon.appendChild(h2);
+            //ahora llamamos a cada pokémon de ese tipo
             fetch(element.url)
                 .then(respuesta => respuesta.json())
                 .then(lista => lista.pokemon.forEach(pokemon => {
+                    //si el pokemon tiene en su nombre - no lo mostraremos pues son formas especiales que dan problemas para mostrarlas
                     if (pokemon.pokemon.name.indexOf("-") == -1) {
                         let div = document.createElement("div");
                         let p = document.createElement("p");
                         let img = document.createElement("img");
+                        //ahora por la url del pokemon vamos a sacar su numero en la lista sin hacer aun la tercera llamada, el rango va de 1 hasta los 3 digitos
                         let numero = pokemon.pokemon.url.substring(34, 38);
                         if (numero.slice(-1) == "/") {
                             numero = numero.substring(0, numero.length - 1);
@@ -87,6 +96,7 @@ fetch("https://pokeapi.co/api/v2/type/")
                         if (numero.length == 2) {
                             numero = "0" + numero;
                         }
+                        //ahora mediante esta url podemos sacar las imagenes dinámicamente gracias a los numeros sacados
                         img.src = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/" + numero + ".png";
                         div.className = "pokemon_Div col-4";
                         p.innerText = pokemon.pokemon.name;
@@ -95,12 +105,13 @@ fetch("https://pokeapi.co/api/v2/type/")
                         div.appendChild(p);
                         div.appendChild(img);
                         div.style.backgroundColor = color;
+                        //ahora cuando clickamos al pokemon sacamos su información siendo una tercera llamada
                         div.addEventListener("click", function (e) {
-
 
                             fetch(pokemon.pokemon.url)
                                 .then(respuesta => respuesta.json())
                                 .then(datos => {
+                                    //creamos un model con css y js donde mostrará los datos del pokémon en cuestión
                                     let model = document.createElement("div");
                                     model.className = "modal";
                                     model.id = "modal";
@@ -119,6 +130,7 @@ fetch("https://pokeapi.co/api/v2/type/")
                                     number.innerText="Pokedex: "+datos.id;
                                     divInfo.appendChild(pokeball);
                                     divInfo.appendChild(number);
+                                    //si existe el datos.types[1] es que tiene dos tipos, que es lo máximo que puede tener un pokémon
                                     if(datos.types[1]){
                                         let p2 = document.createElement("p");
                                         p2.innerText="Types";
@@ -146,16 +158,19 @@ fetch("https://pokeapi.co/api/v2/type/")
                                     let span = document.createElement("span");
                                     span.innerText = "X";
                                     span.className = "close";
+                                    //la imagen esta vez un gif dinámica según el nombre del pokemon
                                     img.src="https://play.pokemonshowdown.com/sprites/ani/"+pokemon.pokemon.name+".gif"
                                     img.className="imgInfo";
                                     infoPokemon.appendChild(p1);
                                     infoPokemon.appendChild(span);
+                                    //si pulsamos en la x que es el span eliminará el model con los datos del pokémon
                                     span.onclick = function () {
                                         document.body.removeChild(document.getElementById("modal"));
                                     }
                                     divInfo.className="divInfo"
                                     infoPokemon.appendChild(img);
                                     infoPokemon.appendChild(divInfo);
+                                    //si pulsamos en el modal no en la información del pokémon lo eliminamos
                                     window.onclick = function (event) {
                                         if (event.target == model) {
                                             document.body.removeChild(document.getElementById("modal"));
@@ -166,9 +181,11 @@ fetch("https://pokeapi.co/api/v2/type/")
                                     model.style.display = "block";
                                 });
                         });
+                        //añadimos los pokemons 
                         divPokemon.appendChild(div);
                     }
                 })).catch(error => console.log(error))
+                //añadimos el div con los pokemons al body
             document.body.appendChild(divPokemon);
         })
         lista.appendChild(div);
